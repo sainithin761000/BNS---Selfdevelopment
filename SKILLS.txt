@@ -1,7 +1,4 @@
 Skills required for a data engineer
-
-
-
 Statistical Analysis and Mathematics
 Python
 R

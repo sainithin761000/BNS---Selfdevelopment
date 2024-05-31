@@ -1,0 +1,34 @@
+Skills required for a data engineer
+
+
+
+Statistical Analysis and Mathematics
+Python
+R
+SQL
+Data Cleaning Techniques
+Data Pipelines
+Cloud Computing
+ETL Tools
+Distributed computing
+Data Warehouse
+Data collection
+Data enrichment
+Google Sheets Necessary Skills
+Creating and Managing Sheets
+Data entry
+Basic formatting
+Basic formulas
+Google Sheets Basic Skills 
+Importing data
+Organizing data
+Sorting data
+Filtering data
+Using basic formulae
+Designing a spreadsheet
+Conditional formatting
+Google sheets Advanced skills 
+Data visualization
+Pivot tables
+Integrating google sheets with other apps
+Using functions

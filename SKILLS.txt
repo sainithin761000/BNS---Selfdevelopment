@@ -17,7 +17,7 @@ Data enrichment
 Google Sheets Necessary Skills
 Creating and Managing Sheets
 Data entry
-Basic formatting
+
 Basic formulas
 Google Sheets Basic Skills 
 Importing data

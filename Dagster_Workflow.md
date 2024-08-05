@@ -71,5 +71,9 @@ def hello_world_pipeline():
     </li>
 </ol>
 
+<h2>Conclusion</h2>
+<p>Dagster provides a powerful and flexible platform for building and maintaining data pipelines. Its asset-centric approach and robust orchestration capabilities make it a great choice for data engineering projects.</p>
+
 </body>
 </html>
+

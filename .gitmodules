@@ -3,4 +3,7 @@
 	url = https://github.com/sainithin761000/docker-postgres.git
 [submodule "Airbyte_scripts"]
 	path = Airbyte_scripts
-	url = https://github.com/sainithin761000/Airbyte_scripts
+	url = https://github.com/sainithin761000/Airbyte_scripts.git
+[submodule "Docker-airbyte"]
+	path = Docker-airbyte
+	url = https://github.com/sainithin761000/Docker-airbyte.git	

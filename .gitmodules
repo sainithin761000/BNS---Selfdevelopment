@@ -6,4 +6,4 @@
 	url = https://github.com/sainithin761000/Airbyte_Scripts.git
 [submodule "Docker-airbyte"]
 	path = Docker-airbyte
-	url = https://github.com/sainithin761000/Docker-airbyte.git	
+	url = https://github.com/Sreeja070/Docker-airbyte.git	

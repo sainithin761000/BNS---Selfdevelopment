@@ -32,8 +32,11 @@
 <h4>Preparation Steps:</h4>
 <ol>
     <li><strong>Launch the Airbyte Container:</strong> Start the Airbyte container on your EC2 instance.</li>
+    <!-- Insert image: Screenshot of the terminal command launching the Airbyte container -->
     <li><strong>Access the Airbyte UI:</strong> Navigate to the Airbyte UI by entering <code>http://&lt;instance_IP_address&gt;:&lt;port_number&gt;</code> in your web browser.</li>
+    <!-- Insert image: Screenshot of the Airbyte UI login page -->
     <li><strong>Retrieve the Workspace ID:</strong> Obtain the Workspace ID from the URL in your developer portal. The Workspace ID is found between "workspace/" and the following "/".</li>
+    <!-- Insert image: Highlight the portion of the URL containing the Workspace ID -->
 </ol>
 
 <h3 id="step-by-step-instructions">Step-by-Step Instructions</h3>
@@ -41,14 +44,38 @@
 <h4 id="creating-an-application">1. Creating an Application</h4>
 <ol>
     <li><strong>Access the Airbyte UI:</strong> Log into the Airbyte UI.</li>
+    <!-- Insert image: Screenshot of the Airbyte UI home page -->
     <li><strong>Navigate to Settings:</strong> Go to the 'Settings' section and select 'Create Application.'</li>
+    <!-- Insert image: Screenshot of the 'Create Application' option within the Settings menu -->
     <li><strong>Create the Application:</strong> Enter a name for your application and complete the creation process.</li>
+    <!-- Insert image: Screenshot showing the form fields for creating a new application -->
     <li><strong>Secure Your Credentials:</strong> Copy and securely store the <code>Client ID</code> and <code>Client Secret</code>, as these are essential for generating tokens.</li>
+    <!-- Insert image: Screenshot showing the generated Client ID and Client Secret -->
 </ol>
+
+<p><strong>Code Example:</strong></p>
+<pre><code class="python">
+# Sample Python code to obtain access token
+
+import requests
+
+url = "https://airbyte.io/api/v1/token"
+payload = {
+    "client_id": "your_client_id_here",
+    "client_secret": "your_client_secret_here",
+    "grant_type": "client_credentials"
+}
+
+response = requests.post(url, data=payload)
+access_token = response.json().get("access_token")
+print(f"Access Token: {access_token}")
+</code></pre>
+<p><em>Your code should look like this.</em></p>
 
 <h4 id="obtain-an-access-token">2. Obtain an Access Token</h4>
 <ol>
     <li><strong>Visit Airbyte Documentation:</strong> Refer to the <a href="https://airbyte.com/reference/getting-started" target="_blank">Airbyte Reference - Getting Started</a>.</li>
+    <!-- Insert image: Screenshot of the relevant section in the Airbyte documentation -->
     <li><strong>Generate Token:</strong>
         <ul>
             <li>Navigate to the "Application" tab and click on "Get an Access Token."</li>
@@ -56,12 +83,14 @@
             <li>Choose your preferred programming language (e.g., Python) to generate the code.</li>
         </ul>
     </li>
+    <!-- Insert image: Screenshot showing the token generation interface -->
     <li><strong>Run the Code:</strong>
         <ul>
             <li>Copy the generated code into a new file in Visual Studio Code (VSCode).</li>
             <li>Run the code using the command: <code>docker-compose up</code>.</li>
         </ul>
     </li>
+    <!-- Insert image: Screenshot showing the terminal output with the generated access token -->
     <li><strong>Store the Token:</strong> The output will include an access token in JSON format. Save this token, noting that it is valid for only 3 minutes.</li>
 </ol>
 
@@ -73,18 +102,46 @@
             <li>Click on "Create a Source."</li>
         </ul>
     </li>
+    <!-- Insert image: Screenshot of the "Create a Source" tab -->
     <li><strong>Configure the Source:</strong>
         <ul>
             <li>Enter a name for your source and paste your <code>workspace_id</code>.</li>
             <li>Select the source configuration and provide credentials (e.g., for Google Sheets).</li>
         </ul>
     </li>
+    <!-- Insert image: Screenshot showing the source configuration form -->
     <li><strong>Authorize and Run:</strong>
         <ul>
             <li>Paste the access token in the authorization tab.</li>
             <li>Copy the generated Python code, paste it into a terminal or text editor, and execute it.</li>
         </ul>
     </li>
+    <!-- Insert image: Screenshot showing the Python code generation process -->
+</ol>
+
+<p><strong>Code Example:</strong></p>
+<pre><code class="python">
+# Sample Python code to create a source
+
+import requests
+
+url = "https://airbyte.io/api/v1/sources/create"
+payload = {
+    "workspace_id": "your_workspace_id_here",
+    "source_definition_id": "source_def_id_here",
+    "connection_configuration": {
+        "spreadsheet_id": "your_spreadsheet_id_here"
+    }
+}
+headers = {"Authorization": f"Bearer {access_token}"}
+
+response = requests.post(url, json=payload, headers=headers)
+source_id = response.json().get("sourceId")
+print(f"Source ID: {source_id}")
+</code></pre>
+<p><em>Your code should look like this.</em></p>
+
+<ol start="4">
     <li><strong>Save the Source ID:</strong> The output will include a <code>sourceId</code>. Copy and securely store this ID for future use.</li>
 </ol>
 
@@ -96,18 +153,49 @@
             <li>Click on "Create a Destination."</li>
         </ul>
     </li>
+    <!-- Insert image: Screenshot of the "Create a Destination" tab -->
     <li><strong>Configure the Destination:</strong>
         <ul>
             <li>Enter a name for your destination and paste your <code>workspace_id</code>.</li>
             <li>Select your destination configuration and provide the necessary credentials (e.g., PostgreSQL).</li>
         </ul>
     </li>
+    <!-- Insert image: Screenshot showing the destination configuration form -->
     <li><strong>Authorize and Run:</strong>
         <ul>
             <li>Paste the access token in the authorization tab.</li>
             <li>Copy the generated Python code, paste it into your text editor, and execute it.</li>
         </ul>
     </li>
+</ol>
+
+<p><strong>Code Example:</strong></p>
+<pre><code class="python">
+# Sample Python code to create a destination
+
+import requests
+
+url = "https://airbyte.io/api/v1/destinations/create"
+payload = {
+    "workspace_id": "your_workspace_id_here",
+    "destination_definition_id": "destination_def_id_here",
+    "connection_configuration": {
+        "host": "your_db_host_here",
+        "port": 5432,
+        "database": "your_db_name_here",
+        "username": "your_db_username_here",
+        "password": "your_db_password_here"
+    }
+}
+headers = {"Authorization": f"Bearer {access_token}"}
+
+response = requests.post(url, json=payload, headers=headers)
+destination_id = response.json().get("destinationId")
+print(f"Destination ID: {destination_id}")
+</code></pre>
+<p><em>Your code should look like this.</em></p>
+
+<ol start="4">
     <li><strong>Save the Destination ID:</strong> The output will include a <code>destinationId</code>. Copy and securely store this ID.</li>
 </ol>
 
@@ -118,11 +206,13 @@
             <li>Navigate to the "Connection" tab and click on "Create Connection."</li>
         </ul>
     </li>
+    <!-- Insert image: Screenshot of the "Create Connection" tab -->
     <li><strong>Configure the Connection:</strong>
         <ul>
             <li>Provide a name for the connection, along with the <code>sourceId</code> and <code>destinationId</code> obtained in previous steps.</li>
         </ul>
     </li>
+    <!-- Insert image: Screenshot showing the connection configuration form -->
     <li><strong>Generate and Run Code:</strong>
         <ul>
             <li>Follow the process outlined previously to generate the code.</li>
@@ -130,6 +220,26 @@
         </ul>
     </li>
 </ol>
+
+<p><strong>Code Example:</strong></p>
+<pre><code class="python">
+# Sample Python code to create a connection
+
+import requests
+
+url = "https://airbyte.io/api/v1/connections/create"
+payload = {
+    "source_id": "your_source_id_here",
+    "destination_id": "your_destination_id_here",
+    "name": "your_connection_name_here"
+}
+headers = {"Authorization": f"Bearer {access_token}"}
+
+response = requests.post(url, json=payload, headers=headers)
+connection_id = response.json().get("connectionId")
+print(f"Connection ID: {connection_id}")
+</code></pre>
+<p><em>Your code should look like this.</em></p>
 
 <h3 id="conclusion">Conclusion</h3>
 <p>Congratulations! You’ve successfully deployed the Airbyte API on an EC2 instance using Docker. With the setup complete, you can now use the Airbyte dashboard to manage your data integrations effortlessly. For more advanced configurations and integrations, refer to the <a href="https://airbyte.com/docs" target="_blank">Airbyte documentation</a>.</p>

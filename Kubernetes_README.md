@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kubernetes Workflow</title>
 </head>
 <body>
 
 <!-- Heading -->
-<h1>Kubernetes Workflow</h1>
+<h1>Kubernetes</h1>
 
 <!-- Introduction -->
 <p>Kubernetes, also known as K8s or kube, is an open-source platform that automates the deployment, scaling, and management of containerized applications. It's considered the standard for deploying and operating containerized applications, making it simpler to build and run complex applications.</p>
@@ -79,7 +78,7 @@
 <p>These services handle tasks like setting up and configuring the control plane, scaling the cluster, and providing ongoing maintenance and support, making Kubernetes accessible for mid-size organizations. For small organizations, the principle of YAGNI (You Ain’t Gonna Need It) may apply, recommending against over-engineering with Kubernetes.</p>
 
 <!-- Subheading -->
-<h2>Kubernetes Workflow Overview</h2>
+<h2>Kubernetes Workflow</h2>
 
 <!-- Ordered List -->
 <ol>

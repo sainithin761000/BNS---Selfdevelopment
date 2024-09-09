@@ -1,4 +1,4 @@
-[submodule "docker-postgres"]
+[submodule "docker-postgres-1"]
 	path = docker-postgres
 	url = https://github.com/sainithin761000/docker-postgres.git
 [submodule "Airbyte_Scripts"]
